@@ -1,0 +1,19 @@
+.centrar{
+    text-align: center;
+}
+
+.contenedorPrincipal{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.izquierda{
+    text-align: left;
+}
+.derecha{
+    display: flex;
+    justify-content: flex-end;
+}
+.espaciar{
+    margin: 10px;
+}

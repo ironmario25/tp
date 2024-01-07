@@ -1,0 +1,27 @@
+
+  
+  .car {
+    flex: 0 0 calc(100% / 5);
+    box-sizing: border-box;
+    margin: 10px;
+  }
+
+    /* Estilo para el contenedor principal de la galería */
+.mosaico {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Ajusta el tamaño de las columnas automáticamente */
+  gap: 10px; /* Espacio entre las imágenes */
+}
+
+/* Estilo para las imágenes dentro de la galería */
+.mosaico img {
+  width: 100%; /* Asegura que las imágenes ocupen todo el ancho del contenedor */
+  height: auto; /* Mantiene la proporción de aspecto original */
+  object-fit: cover; /* Mantiene la proporción de aspecto y recorta la imagen si es necesario */
+  border-radius: 5px; /* Agrega bordes redondeados a las imágenes */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave para las imágenes */
+}
+  
+.centrar{
+  text-align: center;
+}

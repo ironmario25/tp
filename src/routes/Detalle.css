@@ -1,0 +1,20 @@
+.contenedorDetalle{
+    height: 100vh;
+    text-align: center;
+}
+
+.cardCentrar{
+    /*display: grid;*/
+  /*grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));*/ /* Ajusta el tamaño de las columnas automáticamente */
+  margin-top: 55px;
+    
+}
+.cardCentrar img{
+   
+        width: 240px; /* Asegura que las imágenes ocupen todo el ancho del contenedor */
+        height: 340px; /* Mantiene la proporción de aspecto original */
+        border-radius: 5px; /* Agrega bordes redondeados a las imágenes */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave para las imágenes */
+    
+        
+}
