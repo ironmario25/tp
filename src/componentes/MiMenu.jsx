@@ -111,6 +111,7 @@ function MiMenu({ menuBUscar = (palabra) => { } }) {
         break;
       }
       default: {
+        alert("error")
         console.log("error");
         break
       }
