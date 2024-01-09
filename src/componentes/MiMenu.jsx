@@ -63,7 +63,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 
-const pages = ['Peliculas', 'Series','Series'];
+const pages = ['Peliculas','Series'];
 const settings = ['Acerca De', 'Cerrar Sesion'];
 // para cambiar el color 
 const styles = {
@@ -101,17 +101,18 @@ function MiMenu({ menuBUscar = (palabra) => { } }) {
   const handleCloseUserMenu = (setting) => {
     setAnchorElUser(null);
     console.log(setting.target.textContent);
-    switch (setting.target.textContent) {
+    let textContent = setting.target.textContent.trim();
+    switch (textContent) {
       case 'Acerca De': {
         navigate('/AcercaDe');
         break
       }
-      case 'Cerrar Sesion': {
+      case "Cerrar Sesion": {
         logout()
         break;
       }
       default: {
-        alert("error:"+setting.target.textContent)
+        
         console.log("error");
         break
       }
