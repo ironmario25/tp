@@ -63,7 +63,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 
-const pages = ['Peliculas', 'Series'];
+const pages = ['Peliculas', 'Series','Series'];
 const settings = ['Acerca De', 'Cerrar Sesion'];
 // para cambiar el color 
 const styles = {
@@ -111,7 +111,7 @@ function MiMenu({ menuBUscar = (palabra) => { } }) {
         break;
       }
       default: {
-        alert("error")
+        alert("error:"+setting.target.textContent)
         console.log("error");
         break
       }
