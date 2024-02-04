@@ -92,10 +92,10 @@ function MiMenu({ menuBUscar = (palabra) => { } }) {
     // console.log(event.currentTarget);
   };
   //navegacion del nav menu
-  const handleCloseNavMenu = (page) => {
+  const handleCloseNavMenu = (e) => {
     setAnchorElNav(null);
-    //console.log(page.target.textContent);
-    navigate('/' + page.target.textContent);
+    console.log(e.target.textContent);
+    navigate('/' + e.target.textContent);
   };
   // navegacion del user menu
   const handleCloseUserMenu = (setting) => {
@@ -184,7 +184,8 @@ function MiMenu({ menuBUscar = (palabra) => { } }) {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={(page) => { handleCloseNavMenu(page) }}>
+               // <MenuItem key={page} id={page} onClick={(page) => { handleCloseNavMenu(page) }}>
+               <MenuItem key={page} id={page} onClick={  handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
