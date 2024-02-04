@@ -94,13 +94,14 @@ function MiMenu({ menuBUscar = (palabra) => { } }) {
   //navegacion del nav menu
   const handleCloseNavMenu = (e) => {
     setAnchorElNav(null);
-    console.log(e.target.textContent);
-    navigate('/' + e.target.textContent);
+    console.log(e.target.id);
+    navigate('/' + e.target.id);
+   // navigate('/' + e.target.textContent);
   };
   // navegacion del user menu
   const handleCloseUserMenu = (setting) => {
     setAnchorElUser(null);
-    console.log(setting.target.textContent);
+   // console.log(setting.target.textContent);
     let textContent = setting.target.textContent.trim();
     switch (textContent) {
       case 'Acerca De': {
@@ -186,7 +187,7 @@ function MiMenu({ menuBUscar = (palabra) => { } }) {
               {pages.map((page) => (
                // <MenuItem key={page} id={page} onClick={(page) => { handleCloseNavMenu(page) }}>
                <MenuItem key={page} id={page} onClick={  handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography id={page} textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
 
@@ -217,6 +218,7 @@ function MiMenu({ menuBUscar = (palabra) => { } }) {
             {pages.map((page) => (
               <Button
                 key={page}
+                id={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
