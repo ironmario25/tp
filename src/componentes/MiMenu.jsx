@@ -64,7 +64,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 
 const pages = ['Peliculas','Series'];
-const settings = ['Acerca De', 'Cerrar Sesion'];
+const settings = [{id:1,titulo:'Acerca De'},{id:2,titulo:'Cerrar Sesion'} ];
 // para cambiar el color 
 const styles = {
   appBar: {
@@ -101,15 +101,15 @@ function MiMenu({ menuBUscar = (palabra) => { } }) {
   // navegacion del user menu
   const handleCloseUserMenu = (setting) => {
     setAnchorElUser(null);
-    console.log(setting.target.id);
-    alert(setting.target.id);
+    console.log(setting);
+   // alert(setting.target.id);
     let textContent = setting.target.id.trim();
-    switch (textContent) {
-      case 'Acerca De': {
+    switch (parseInt(setting.target.id)) {
+      case 1: {
         navigate('/AcercaDe');
         break
       }
-      case "Cerrar Sesion": {
+      case 2: {
         logout()
         break;
       }
@@ -263,8 +263,8 @@ function MiMenu({ menuBUscar = (palabra) => { } }) {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} id={setting} onClick={(setting) => { handleCloseUserMenu(setting) }}>
-                  <Typography id={setting} textAlign="center">{setting}</Typography>
+                <MenuItem key={setting.id} id={setting.id} onClick={(setting) => { handleCloseUserMenu(setting) }}>
+                  <Typography id={setting.id} textAlign="center">{setting.titulo}</Typography>
                 </MenuItem>
               ))}
 
