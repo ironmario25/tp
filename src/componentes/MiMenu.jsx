@@ -102,6 +102,7 @@ function MiMenu({ menuBUscar = (palabra) => { } }) {
   const handleCloseUserMenu = (setting) => {
     setAnchorElUser(null);
     console.log(setting.target.id);
+    alert(setting.target.id);
     let textContent = setting.target.id.trim();
     switch (textContent) {
       case 'Acerca De': {
