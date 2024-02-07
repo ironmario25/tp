@@ -63,8 +63,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 
-const pages = ['Peliculas','Series'];
-const settings = [{id:1,titulo:'Acerca De'},{id:2,titulo:'Cerrar Sesion'} ];
+const pages = ['Peliculas', 'Series', 'Acerca De', 'Cerrar Sesion'];
+const settings = [{ id: 1, titulo: 'Acerca De' }, { id: 2, titulo: 'Cerrar Sesion' }];
 // para cambiar el color 
 const styles = {
   appBar: {
@@ -94,188 +94,199 @@ function MiMenu({ menuBUscar = (palabra) => { } }) {
   //navegacion del nav menu
   const handleCloseNavMenu = (e) => {
     setAnchorElNav(null);
-    //console.log(e.target.id);
-    navigate('/' + e.target.id);
-   
-  };
-  // navegacion del user menu
-  const handleCloseUserMenu = (setting) => {
-    setAnchorElUser(null);
-    console.log(setting);
-   // alert(setting.target.id);
-    let textContent = setting.target.id.trim();
-    switch (parseInt(setting.target.id)) {
-      case 1: {
-        navigate('/AcercaDe');
-        break
-      }
-      case 2: {
-        logout()
+    console.log(e.target.id);
+    switch (e.target.id) {
+      case "Acerca De":
+        navigate('/acercaDe');
         break;
-      }
-      default: {
-        
-        console.log("error");
-        break
-      }
+      case "Cerrar Sesion":
+        logout();
+        break;
+      default:
+        navigate('/' + e.target.id);
+        break;
     }
 
-  };
-  const handleNameChange = (event) => {
-    console.log("cambio");
-    setName(event.target.value);
-  };
-  function buscar(e) {
-    menuBUscar(name);
-  }
+    };
+    // navegacion del user menu
+    const handleCloseUserMenu = (setting) => {
+      setAnchorElUser(null);
+      console.log(setting);
+      // alert(setting.target.id);
+      let textContent = setting.target.id.trim();
+      switch (parseInt(setting.target.id)) {
+        case 1: {
+          navigate('/AcercaDe');
+          break
+        }
+        case 2: {
+          logout()
+          break;
+        }
+        default: {
 
-  return (
+          console.log("error");
+          break
+        }
+      }
 
-    <AppBar position="static" style={styles.appBar}>
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          {/*<AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />*/}
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            <Logo></Logo>
+    };
+    const handleNameChange = (event) => {
+      console.log("cambio");
+      setName(event.target.value);
+    };
+    function buscar(e) {
+      menuBUscar(name);
+    }
 
-          </Typography>
+    return (
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
+      <AppBar position="static" style={styles.appBar}>
+        <Container maxWidth="xl">
+          <Toolbar disableGutters>
+            {/*<AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />*/}
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="#app-bar-with-responsive-menu"
               sx={{
-                display: { xs: 'block', md: 'none' },
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
               }}
             >
-              {pages.map((page) => (
-               // <MenuItem key={page} id={page} onClick={(page) => { handleCloseNavMenu(page) }}>
-               <MenuItem key={page} id={page} onClick={  handleCloseNavMenu}>
-                  <Typography id={page} textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
+              <Logo></Logo>
 
-            </Menu>
+            </Typography>
 
-          </Box>
-          {/*abejita: <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />*/}
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
+            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
 
-          </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                id={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleOpenNavMenu}
+                color="inherit"
               >
-                {page}
-              </Button>
-            ))}
-          </Box>
-          <Button color="inherit" variant="outlined" onClick={buscar}>Buscar</Button>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-              onChange={handleNameChange}
-
-            />
-          </Search>
-          <Box sx={{ flexGrow: 0 }}>
-
-            <Tooltip title="Opciones">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <MenuIcon />
               </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorElNav}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'left',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                sx={{
+                  display: { xs: 'block', md: 'none' },
+                }}
+              >
+                {pages.map((page) => (
+                  // <MenuItem key={page} id={page} onClick={(page) => { handleCloseNavMenu(page) }}>
+                  <MenuItem key={page} id={page} onClick={handleCloseNavMenu}>
+                    <Typography id={page} textAlign="center">{page}</Typography>
+                  </MenuItem>
+                ))}
+
+              </Menu>
+
+            </Box>
+            {/*abejita: <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />*/}
+            <Typography
+              variant="h5"
+              noWrap
+              component="a"
+              href="#app-bar-with-responsive-menu"
+              sx={{
+                mr: 2,
+                display: { xs: 'flex', md: 'none' },
+                flexGrow: 1,
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
               }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting.id} id={setting.id} onClick={(setting) => { handleCloseUserMenu(setting) }}>
-                  <Typography id={setting.id} textAlign="center">{setting.titulo}</Typography>
-                </MenuItem>
+
+            </Typography>
+
+            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+              {pages.map((page) => (
+                <Button
+                  key={page}
+                  id={page}
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  {page}
+                </Button>
               ))}
+            </Box>
+            <Button color="inherit" variant="outlined" onClick={buscar}>Buscar</Button>
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ 'aria-label': 'search' }}
+                onChange={handleNameChange}
 
-            </Menu>
+              />
+            </Search>
+            {/* <Box sx={{ flexGrow: 0 }}>
 
-          </Box>
+              <Tooltip title="Opciones">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                </IconButton>
+              </Tooltip>
+              <Menu
+                sx={{ mt: '45px' }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                {settings.map((setting) => (
+                  <MenuItem key={setting.id} id={setting.id} onClick={(setting) => { handleCloseUserMenu(setting) }}>
+                    <Typography id={setting.id} textAlign="center">{setting.titulo}</Typography>
+                  </MenuItem>
+                ))}
 
-        </Toolbar>
-      </Container>
-    </AppBar>
+              </Menu>
 
-  );
-}
-export default MiMenu;
+            </Box> */}
+            
+
+          </Toolbar>
+        </Container>
+      </AppBar>
+
+    );
+  }
+  export default MiMenu;
